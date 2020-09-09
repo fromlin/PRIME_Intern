@@ -12,7 +12,7 @@
 #include <sstream>
 #include <atlconv.h>
 #include <thread>
-#include "bCAPClient/bcap_client.h"
+#include "../include/bCAPClient/bcap_client.h"
 
 
 #define _USE_MATH_DEFINES
@@ -26,9 +26,10 @@ public:
 	denso_control();
 	~denso_control();
 
+	void Connect();
 	void Initialize();
 	void MotorOn();
-	void Getparam();
+	void getParam();
 	void Movepos();
 	void ChangeJointAngle();
 	void OutRange();
