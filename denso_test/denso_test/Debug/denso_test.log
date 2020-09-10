@@ -1,7 +1,0 @@
-﻿denso_control.obj : error LNK2019: _bCap_Open_Client 외부 기호(참조 위치: "public: __thiscall denso_control::denso_control(void)" (??0denso_control@@QAE@XZ) 함수)에서 확인하지 못했습니다.
-denso_control.obj : error LNK2019: _bCap_ServiceStart 외부 기호(참조 위치: "public: __thiscall denso_control::denso_control(void)" (??0denso_control@@QAE@XZ) 함수)에서 확인하지 못했습니다.
-denso_control.obj : error LNK2019: _bCap_ControllerConnect 외부 기호(참조 위치: "public: __thiscall denso_control::denso_control(void)" (??0denso_control@@QAE@XZ) 함수)에서 확인하지 못했습니다.
-denso_control.obj : error LNK2019: _bCap_ControllerGetRobot 외부 기호(참조 위치: "public: __thiscall denso_control::denso_control(void)" (??0denso_control@@QAE@XZ) 함수)에서 확인하지 못했습니다.
-denso_control.obj : error LNK2019: _bCap_RobotExecute 외부 기호(참조 위치: "public: void __thiscall denso_control::Initialization(void)" (?Initialization@denso_control@@QAEXXZ) 함수)에서 확인하지 못했습니다.
-denso_control.obj : error LNK2019: _bCap_RobotMove 외부 기호(참조 위치: "public: void __thiscall denso_control::Initialization(void)" (?Initialization@denso_control@@QAEXXZ) 함수)에서 확인하지 못했습니다.
-C:\Users\PRIME_ody\Desktop\Lin\denso_test\Debug\denso_test.exe : fatal error LNK1120: 6개의 확인할 수 없는 외부 참조입니다.

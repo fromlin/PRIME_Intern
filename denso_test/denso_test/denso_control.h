@@ -29,18 +29,28 @@ public:
 	void Connect();
 	void Initialize();
 	void MotorOn();
+	void Speed();
 	void getParam();
+
 	void Movepos();
+	void Movejoint();
 	void ChangeJointAngle();
-	void OutRange();
+
 	void KillAll();
 	void End();
-	void background();
+	void ClearError();
+
+	void Task1();
 
 
 	
-	void print(string str, int i);
+
+
 	stringstream makeString(double str[], char type);
+	void print(string str, int i);
+	void background();
+
+
 
 
 
@@ -53,15 +63,22 @@ public:
 	VARIANT		     vntParam, vntRet;
 	long				      *plData;
 	double *pdData, *getData, data[7];
+	int							speed;
+
+
 
 
 
 private:
 	stringstream command;
 
-	double initial_pos[7] = { 400.0, 0.0, 400.0, -180.0, 90.0, 180.0 };
-	double		 limit[6] = { 350.0, 350.0, 250.0, 180.0, 0, 180.0 };
-
-	double		  pos1[6] = { 200.0, 0.0, 400.0, -120.0, 90.0, 180.0 };
+	double   initial_pos[6] = { 400.0, 0.0, 400.0, -180.0, 90.0, 180.0 };
+	double		  pos[3][6] = { {200.0, 100.0, 500.0, -180.0, 90.0, 180.0},
+								{100.0, -100.0, 600.0, -180.0, 90.0, 180.0},
+								{400.0, 200.0, 200.0, -180.0, 90.0, 180.0} };
+	double	 jointpos[3][6] = { {90.0, -20.0, 50.0, 0.0, 60.0, 0.0},
+								{0.0, 60.0, 120.0, 135.0, 0.0, 180.0},
+								{-75.0, 30.0, -40.0, -100.0, -60.0, 270.0} };
+	// Joint Max: [170, 120, +151 / -120, 270, 120, 360]
 };
 

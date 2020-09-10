@@ -1,12 +1,21 @@
 #include "denso_control.h"
 
-
-
 denso_control::denso_control() { }
-
 
 denso_control::~denso_control()
 {
+	bstr1 = SysAllocString(L"GiveArm");
+	VariantInit(&vntParam);
+	vntParam.vt = VT_EMPTY;
+
+	/* Release arm control authority */
+	bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
+	SysFreeString(bstr1);
+	VariantClear(&vntParam);
+	VariantClear(&vntRet);
+
+
+
 	/* Release robot handle */
 	bCap_RobotRelease(fd, &hRob);
 
@@ -19,6 +28,9 @@ denso_control::~denso_control()
 	/* Close connection */
 	bCap_Close_Client(&fd);
 }
+
+
+
 
 
 void denso_control::Connect()
@@ -37,8 +49,8 @@ void denso_control::Connect()
 
 		/* Connect to RC8 */
 		hr = bCap_ControllerConnect(fd, bstr1, bstr2, bstr3, bstr4, &hCtrl);
-		if (SUCCEEDED(hr))	print("bCap_ControllerConnect Succeeded...", 0);
-		else				print("bCap_ControllerConnect Failed...", 0);
+		if (SUCCEEDED(hr))	print("Connect  Succeeded...", 0);
+		else				print("Connect  Failed...", 0);
 
 		//Release Variables
 		SysFreeString(bstr1);
@@ -56,85 +68,103 @@ void denso_control::Connect()
 
 			hr = bCap_ControllerGetRobot(fd, hCtrl, bstr1, bstr2, &hRob);
 
-			if (SUCCEEDED(hr))	print("bCap_ControllerGetRobot Succeeded...", 0);
-			else				print("bCap_ControllerGetRobot Failed...", 0);
+			if (SUCCEEDED(hr))	print("GetRobot Succeeded...", 0);
+			else				print("GetRobot Failed...", 0);
 
 			//Release Variables
 			SysFreeString(bstr1);
 			SysFreeString(bstr2);
+
+			if (SUCCEEDED(hr)) {
+				bstr1 = SysAllocString(L"TakeArm");
+
+				// Populate parameter option
+				VariantInit(&vntParam);
+				vntParam.vt = (VT_I4 | VT_ARRAY);
+				vntParam.parray = SafeArrayCreateVector(VT_I4, 0, 2);
+				SafeArrayAccessData(vntParam.parray, (void **)&plData);
+				plData[0] = 0;		// Arm Group Number
+				plData[1] = 0;		// Keep Value
+				SafeArrayUnaccessData(vntParam.parray);
+
+				/* Take Arm */
+				printf("TakeArm\n");
+				hr = bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
+
+				SysFreeString(bstr1);
+				VariantClear(&vntParam);
+				VariantClear(&vntRet);
+
+				if (SUCCEEDED(hr)) {
+					bstr1 = SysAllocString(L"ExtSpeed");
+					VariantInit(&vntParam);
+					vntParam.vt = (VT_R8 | VT_ARRAY);
+					vntParam.parray = SafeArrayCreateVector(VT_R8, 0, 1);
+					SafeArrayAccessData(vntParam.parray, (void **)&pdData);
+					/* EXTSPEED 100% & ACCELERATION 0% & DECELERATION 50% */
+					pdData[0] = 10;
+					pdData[1] = 50;
+					pdData[2] = 50;
+					SafeArrayUnaccessData(vntParam.parray);
+
+					printf("External Speed = %.f\n", pdData[0]);
+					bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
+					SysFreeString(bstr1);
+					VariantClear(&vntParam);
+					VariantClear(&vntRet);
+				}
+			}
 		}
 	}
 }
 
 void denso_control::Initialize()
 {
-	bstr1 = SysAllocString(L"TakeArm");
-
-	// Populate parameter option
+	/* MOTOR ON */
+	bstr1 = SysAllocString(L"Motor");
 	VariantInit(&vntParam);
-	vntParam.vt = (VT_I4 | VT_ARRAY);
-	vntParam.parray = SafeArrayCreateVector(VT_I4, 0, 2);
-	SafeArrayAccessData(vntParam.parray, (void **)&plData);
-	plData[0] = 0;		// Arm Group Number
-	//plData[1] = 1;		// Mode
-	SafeArrayUnaccessData(vntParam.parray);
+	vntParam.vt = VT_I4;
+	vntParam.lVal = 1;
 
-	/* Take Arm */
-	printf("TakeArm\n");
-	hr = bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
-
+	/* Motor on */
+	print("Motor ON", 0);
+	bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
 	SysFreeString(bstr1);
 	VariantClear(&vntParam);
 	VariantClear(&vntRet);
 
 
 
-	if (SUCCEEDED(hr)) {
-		bstr1 = SysAllocString(L"ExtSpeed");
-		VariantInit(&vntParam);
-		vntParam.vt = (VT_R8 | VT_ARRAY);
-		vntParam.parray = SafeArrayCreateVector(VT_R8, 0, 1);
-		SafeArrayAccessData(vntParam.parray, (void **)&pdData);
-		/* EXTSPEED 100% & ACCELERATION 50% & DECELERATION 50% */
-		pdData[0] = 10;
-		pdData[1] = 50;
-		pdData[2] = 50;
-		SafeArrayUnaccessData(vntParam.parray);
-
-		printf("External Speed = %.f\n", pdData[0]);
-		bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
-		SysFreeString(bstr1);
-		VariantClear(&vntParam);
-		VariantClear(&vntRet);
-
-
-
-		/* MOTOR ON */
-		bstr1 = SysAllocString(L"Motor");
-		VariantInit(&vntParam);
-		vntParam.vt = VT_I4;
-		vntParam.lVal = 1;
-
-		/* Motor on */
-		print("Motor ON", 0);
-		bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
-		SysFreeString(bstr1);
-		VariantClear(&vntParam);
-		VariantClear(&vntRet);
-
-
-
-		// Move to P(x,y,z,rx,ry,rz,fig) / First Position
-		VariantInit(&vntParam);
-		command = makeString(initial_pos, 'P');
-		vntParam.bstrVal = SysAllocString(CA2W(command.str().c_str()));
-		vntParam.vt = VT_BSTR;
-		bCap_RobotMove(fd, hRob, 1, vntParam, NULL);
-		VariantClear(&vntParam);
-		print(command.str(), 0);
-	}
+	// Move to P(x,y,z,rx,ry,rz,fig) / First Position
+	VariantInit(&vntParam);
+	command = makeString(initial_pos, 'P');
+	vntParam.bstrVal = SysAllocString(CA2W(command.str().c_str()));
+	vntParam.vt = VT_BSTR;
+	bCap_RobotMove(fd, hRob, 1, vntParam, NULL);
+	VariantClear(&vntParam);
+	print(command.str(), 0);
 }
 
+void denso_control::Speed()
+{
+	bstr1 = SysAllocString(L"ExtSpeed");
+	VariantInit(&vntParam);
+	vntParam.vt = (VT_R8 | VT_ARRAY);
+	vntParam.parray = SafeArrayCreateVector(VT_R8, 0, 1);
+	SafeArrayAccessData(vntParam.parray, (void **)&pdData);
+	/* EXTSPEED 100% & ACCELERATION 50% & DECELERATION 50% */
+
+	printf("0~100 : ");					cin >> speed;
+	if (speed > 100)	return;
+	pdData[0] = speed;
+	SafeArrayUnaccessData(vntParam.parray);
+
+	printf("External Speed = %.f\n", pdData[0]);
+	bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
+	SysFreeString(bstr1);
+	VariantClear(&vntParam);
+	VariantClear(&vntRet);
+}
 
 void denso_control::getParam()
 {
@@ -142,8 +172,9 @@ void denso_control::getParam()
 	//while (1) {
 		//if (cnt++ > 1000) {
 			/* Get current position (x,y,z,rx,ry,rz,fig) */
-			VariantInit(&vntParam);
 			bstr1 = SysAllocString(L"CurPos");
+			VariantInit(&vntParam);
+			VariantInit(&vntRet);
 			bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
 			SafeArrayAccessData(vntRet.parray, (void **)&getData);
 			memcpy(data, getData, 7 * sizeof(double));
@@ -152,12 +183,13 @@ void denso_control::getParam()
 			SysFreeString(bstr1);
 			VariantClear(&vntParam);
 			VariantClear(&vntRet);
-
+			print("CurPos", 1);
 
 
 			/* Get current joint position  */
-			VariantInit(&vntParam);
 			bstr1 = SysAllocString(L"CurJnt");
+			VariantInit(&vntParam);
+			VariantInit(&vntRet);
 			bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
 			SafeArrayAccessData(vntRet.parray, (void **)&getData);
 			memcpy(data, getData, 7 * sizeof(double));
@@ -166,6 +198,7 @@ void denso_control::getParam()
 			SysFreeString(bstr1);
 			VariantClear(&vntParam);
 			VariantClear(&vntRet);
+			print("CurJnt", 2);
 
 			//cnt = 0;
 		//}
@@ -173,27 +206,21 @@ void denso_control::getParam()
 }
 
 
+
+
+
 void denso_control::Movepos()
 {
 	/* ACCELERATION 100% & DECELERATION 50% */
 	hr = bCap_RobotAccelerate(fd, hRob, 0, 100, 50);		// 0:ALL axes   /   1:TOOL accel
 
-
 	if (SUCCEEDED(hr)) {
-		//// Move to P(x,y,z,rx,ry,rz,fig)
-		VariantInit(&vntParam);
-		command = makeString(pos1, 'P');
-		vntParam.bstrVal = SysAllocString(CA2W(command.str().c_str()));
-		vntParam.vt = VT_BSTR;
-		bCap_RobotMove(fd, hRob, 1, vntParam, NULL);
-		VariantClear(&vntParam);
-		print(command.str(), 0);
+		int i;
+		print("Which pos?(0~2)", 0);		cin >> i;
+		if (i > 2)		return;
 
-		print("\t      &", 0);
-
-		//// Move to P(x,y,z,rx,ry,rz,fig) / First Position
 		VariantInit(&vntParam);
-		command = makeString(initial_pos, 'P');
+		command = makeString(pos[i], 'P');
 		vntParam.bstrVal = SysAllocString(CA2W(command.str().c_str()));
 		vntParam.vt = VT_BSTR;
 		bCap_RobotMove(fd, hRob, 1, vntParam, NULL);
@@ -202,11 +229,27 @@ void denso_control::Movepos()
 	}
 }
 
+void denso_control::Movejoint()
+{
+	if (SUCCEEDED(hr)) {
+		int i;
+		print("Which jointpos?(0~2)", 0);		cin >> i;
+		if (i > 2)		return;
+
+		VariantInit(&vntParam);
+		command = makeString(jointpos[i], 'J');
+		vntParam.bstrVal = SysAllocString(CA2W(command.str().c_str()));
+		vntParam.vt = VT_BSTR;
+		bCap_RobotMove(fd, hRob, 1, vntParam, NULL);
+		VariantClear(&vntParam);
+	}
+}
 
 void denso_control::ChangeJointAngle()
 {
-	VariantInit(&vntParam);
 	bstr1 = SysAllocString(L"CurJnt");
+	VariantInit(&vntParam);
+	VariantInit(&vntRet);
 	hr = bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
 	SafeArrayAccessData(vntRet.parray, (void **)&getData);
 	memcpy(data, getData, 7 * sizeof(double));
@@ -220,7 +263,7 @@ void denso_control::ChangeJointAngle()
 	if (SUCCEEDED(hr)) {
 		int j;	double ang;
 		cout << "which joint?(0~5) : "; cin >> j;
-		cout << "Angle : ";		   cin >> ang;
+		cout << "Angle : ";				cin >> ang;
 		data[j] = ang;
 
 		VariantInit(&vntParam);
@@ -230,62 +273,34 @@ void denso_control::ChangeJointAngle()
 		bCap_RobotMove(fd, hRob, 1, vntParam, NULL);
 		VariantClear(&vntParam);
 	}
-
-
-
-	
-	/* Destination Joint */
-	VariantInit(&vntParam);
-	bstr1 = SysAllocString(L"DestJnt");
-	bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
-	SafeArrayAccessData(vntRet.parray, (void **)&getData);
-	memcpy(data, getData, 7 * sizeof(double));
-	SafeArrayUnaccessData(vntRet.parray);
-
-	SysFreeString(bstr1);
-	VariantClear(&vntParam);
-	VariantClear(&vntRet);
-	print("DestJnt", 2);
 }
 
 
 
-void denso_control::OutRange()
-{
-	/* EXTSPEED 10% */
-	bstr1 = SysAllocString(L"ExtSpeed");
-	VariantInit(&vntParam);
-	vntParam.vt = (VT_R8 | VT_ARRAY);
-	vntParam.parray = SafeArrayCreateVector(VT_R8, 0, 1);
-	SafeArrayAccessData(vntParam.parray, (void **)&pdData);
-	pdData[0] = 10;
-	SafeArrayUnaccessData(vntParam.parray);
 
-	print("External Speed = 10%", 0);
-	bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
-	SysFreeString(bstr1);
-	VariantClear(&vntParam);
-	VariantClear(&vntRet);
-
-
-	print("OutRange", 0);
-	command = makeString(limit, 0);
-	VariantInit(&vntParam);
-	vntParam.bstrVal = SysAllocString(CA2W(command.str().c_str()));
-	vntParam.vt = VT_BSTR;
-	bCap_RobotMove(fd, hRob, 1, vntParam, NULL);
-	VariantClear(&vntParam);
-}
 
 void denso_control::KillAll()
 {
-	bstr1 = SysAllocString(L"KillAll");
+	/*
+	bstr1 = SysAllocString(L"Stop");
 	VariantInit(&vntParam);
-	hr = bCap_ControllerExecute(fd, hRob, bstr1, vntParam, &vntRet);
+	VariantInit(&vntRet);
+	bCap_ExtensionExecute(fd, hCtrl, bstr1, vntParam, &vntRet);
 
 	SysFreeString(bstr1);
 	VariantClear(&vntParam);
 	VariantClear(&vntRet);
+
+
+
+	bstr1 = SysAllocString(L"SuspendAll");
+	VariantInit(&vntParam);
+	bCap_ControllerExecute(fd, hCtrl, bstr1, vntParam, &vntRet);
+
+	SysFreeString(bstr1);
+	VariantClear(&vntParam);
+	VariantClear(&vntRet);
+	*/
 }
 
 void denso_control::MotorOn()
@@ -304,7 +319,6 @@ void denso_control::MotorOn()
 	VariantClear(&vntRet);
 }
 
-
 void denso_control::End()
 {
 	bstr1 = SysAllocString(L"Motor");
@@ -318,19 +332,30 @@ void denso_control::End()
 	SysFreeString(bstr1);
 	VariantClear(&vntParam);
 	VariantClear(&vntRet);
+}
 
-
-
-	bstr1 = SysAllocString(L"GiveArm");
+void denso_control::ClearError()
+{
+	bstr1 = SysAllocString(L"ClearError");
 	VariantInit(&vntParam);
-	vntParam.vt = VT_EMPTY;
+	bCap_ControllerExecute(fd, hCtrl, bstr1, vntParam, &vntRet);
 
-	/* Release arm control authority */
-	printf("GiveArm\n");
-	bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
 	SysFreeString(bstr1);
 	VariantClear(&vntParam);
 	VariantClear(&vntRet);
+}
+
+
+
+void denso_control::Task1()
+{
+	//VariantInit(&vntParam);
+	//command = makeString(pos[i], 'P');
+	//vntParam.bstrVal = SysAllocString(CA2W(command.str().c_str()));
+	//vntParam.vt = VT_BSTR;
+	//bCap_RobotMove(fd, hRob, 1, vntParam, NULL);
+	//VariantClear(&vntParam);
+	//print(command.str(), 0);
 }
 
 
@@ -345,8 +370,9 @@ void denso_control::End()
 stringstream denso_control::makeString(double str[], char type)
 {
 	stringstream temp;
-	if ((pow(str[0], 2) + pow(str[1], 2) + pow(str[2], 2)) > 499)
-		str[1] = 0.0;
+	if (sqrt((pow(str[0], 2) + pow(str[1], 2) + pow(str[2], 2))) > 1499) {
+		str[1] = 0.0;	print("Range Over 1500", 0);
+	}
 	switch (type) {
 	case 'P':
 		temp << "@E P(" << str[0] << "," << str[1] << "," << str[2] << ","
@@ -354,7 +380,9 @@ stringstream denso_control::makeString(double str[], char type)
 	case 'J':
 		temp << "@E J(" << str[0] << "," << str[1] << "," << str[2] << ","
 			<< str[3] << "," << str[4] << "," << str[5] << ", 1)";	break;
-	default:														break;
+	default:
+		temp << "@E J(" << str[0] << "," << str[1] << "," << str[2] << ","
+			<< str[3] << "," << str[4] << "," << str[5] << ", 1)";	break;
 	}
 	return temp;
 }
@@ -374,6 +402,7 @@ void denso_control::print(string str, int i)
 		break;
 	}
 }
+
 
 
 
@@ -402,15 +431,15 @@ void denso_control::background() {
 		case 'M':
 			cout << "Move" << endl;
 			Movepos();	 break;
-		case 'R':
-			cout << "MOVE" << endl;
-			OutRange();	 break;
 		case 'E':
 			cout << "End" << endl;
 			End();		 break;
 		case 'Q':
 			cout << "Kill All" << endl;
 			KillAll();	 break;
+		case 'N':
+			cout << "Clear Error" << endl;
+			ClearError(); break;
 		default:			 break;
 		}
 	}
