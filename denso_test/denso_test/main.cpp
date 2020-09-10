@@ -8,19 +8,38 @@
 
 using namespace std;
 
+
+void Menu() {
+	system("title Denso_Arm");
+	printf("\n\n");
+	printf("\t###################  Menu  ###################\n");
+	printf("\t#   C : Connect         I : Initialization   #\n");
+	printf("\t#   O : Motor On        G : Get Pos & Joint  #\n");
+	printf("\t#   S : Change Speed                         #\n");
+	printf("\t#   --------------------------------------   #\n");
+	printf("\t#   A : 1 Joint Angle   M : Choose 3 Pos     #\n");
+	printf("\t#   J : Choose 3 Pos                         #\n");
+	printf("\t#   --------------------------------------   #\n");
+	printf("\t#   N : Clear Error     E :End               #\n");
+	printf("\t##############################################\n");
+	printf("\t                     Exit                     \n");
+	printf("\n\n\n");
+}
+
+
+
 int main()
 {	
-
 	int key;
-	printf("# ");
-	string start;					cin >> start;
-	
 	denso_control dc;
 	//dc.Connect();
 
+
+	
 	//thread test1([&] {dc.getParam(); });
 	//thread test2([&] {
 		while (1) {
+			Menu();
 			printf("\n>> ");
 			key = _getch();
 			if (key == 27)		 break;
@@ -28,41 +47,59 @@ int main()
 			case 'C':
 				cout << "Connect" << endl;
 				dc.Connect();	 break;
-			case 'I'://************************ 컨트롤러 없이 바로 연결 불가
+			case 'I':
 				cout << "Init" << endl;
 				dc.Initialize(); break;	
 			case 'O':
 				dc.MotorOn();	 break;
-			case 'G'://************************ 두개 값이 같음
+			case 'G':
 				cout << "Get Param" << endl;
-				dc.getParam();
-				dc.print("CurPos", 1);	dc.print("CurJnt", 2);
-				break;
-			case 'J':							// Max: [170, 120, +151/-120, 270, 120, 360]			받아오는 값이랑 값 줄때 뭔가 이상
+				dc.getParam();   break;
+			case 'S':
+				cout << "Change Speed" << endl;
+				dc.Speed();		 break;
+
+
+
+			case 'A':					 // Max: [170, 120, +151/-120, 270, 120, 360]
 				cout << "Change Joint Angle" << endl;
 				dc.ChangeJointAngle();
 				break;
 			case 'M':
-				cout << "Move" << endl;
+				cout << "Move Pos" << endl;
 				dc.Movepos();	 break;
-			case 'R'://********************* 인수가 부정
-				cout << "MOVE" << endl;
-				dc.OutRange();	 break;
+			case 'J':
+				cout << "Move Joint Pos" << endl;
+				dc.Movejoint();	 break;
+
+
+
 			case 'E':
 				cout << "End" << endl;
 				dc.End();		 break;
-			case 'Q'://**************************** 안먹음
-				cout << "Kill All" << endl;
-				dc.KillAll();	 break;
+			//case 'Q'://**************************** 안먹음
+			//	cout << "Kill All" << endl;
+			//	dc.KillAll();	 break;
+			case 'N':
+				cout << "Clear Error" << endl;
+				dc.ClearError(); break;
+
+
+
+			case 'T':
+				cout << "Task1" << endl;
+				dc.Task1(); break;
+
 			default:			 break;
 			}
+			printf("\n\n\n");
 		}
 	//});
 	
-
 	//test1.join();
 	//test2.join();
 
+	dc.End();
 	printf("\n\n# Exit Program\n");
 	return 0;
 }
