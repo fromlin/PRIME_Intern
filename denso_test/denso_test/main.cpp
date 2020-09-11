@@ -87,8 +87,8 @@ int main()
 
 
 			case 'T':
-				cout << "Task1" << endl;
-				dc.Task1(); break;
+				cout << "Task" << endl;
+				dc.Task(); break;
 
 			default:			 break;
 			}
