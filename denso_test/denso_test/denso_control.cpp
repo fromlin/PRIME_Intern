@@ -347,15 +347,66 @@ void denso_control::ClearError()
 
 
 
-void denso_control::Task1()
+void denso_control::Task()
 {
-	//VariantInit(&vntParam);
-	//command = makeString(pos[i], 'P');
-	//vntParam.bstrVal = SysAllocString(CA2W(command.str().c_str()));
-	//vntParam.vt = VT_BSTR;
-	//bCap_RobotMove(fd, hRob, 1, vntParam, NULL);
-	//VariantClear(&vntParam);
-	//print(command.str(), 0);
+	VariantInit(&vntParam);
+	command = makeString(taskpos[0], 'P');
+	vntParam.bstrVal = SysAllocString(CA2W(command.str().c_str()));
+	vntParam.vt = VT_BSTR;
+	bCap_RobotMove(fd, hRob, 1, vntParam, NULL);
+	VariantClear(&vntParam);
+	print(command.str(), 0);
+
+	int j;	 char yn;
+	cout << "which Task?(1,2) : "; cin >> j;
+	cout << "Task start?(Y/n)  "; cin >> yn;
+
+	if (yn = 'Y') {
+		for (int i = 1; i <= 10; i++) {
+			bstr1 = SysAllocString(L"ExtSpeed");
+			VariantInit(&vntParam);
+			vntParam.vt = (VT_R8 | VT_ARRAY);
+			vntParam.parray = SafeArrayCreateVector(VT_R8, 0, 1);
+			SafeArrayAccessData(vntParam.parray, (void **)&pdData);
+			/* EXTSPEED 100% & ACCELERATION 50% & DECELERATION 50% */
+
+			pdData[0] = (i + 1) * 10;
+			if (pdData[0] > 100)	pdData[0] = 100;
+			SafeArrayUnaccessData(vntParam.parray);
+
+			printf("External Speed = %.f\n", pdData[0]);
+			bCap_RobotExecute(fd, hRob, bstr1, vntParam, &vntRet);
+			SysFreeString(bstr1);
+			VariantClear(&vntParam);
+			VariantClear(&vntRet);
+
+
+
+			i %= 2;
+			switch (j) {
+			case 1:
+				VariantInit(&vntParam);
+				command = makeString(taskpos[i + 1], 'P');
+				vntParam.bstrVal = SysAllocString(CA2W(command.str().c_str()));
+				vntParam.vt = VT_BSTR;
+				bCap_RobotMove(fd, hRob, 1, vntParam, NULL);
+				VariantClear(&vntParam);
+				print(command.str(), 0);
+				break;
+			case 2:
+				VariantInit(&vntParam);
+				command = makeString(taskpos[i + 3], 'P');
+				vntParam.bstrVal = SysAllocString(CA2W(command.str().c_str()));
+				vntParam.vt = VT_BSTR;
+				bCap_RobotMove(fd, hRob, 1, vntParam, NULL);
+				VariantClear(&vntParam);
+				print(command.str(), 0);
+				break;
+			default:
+				break;
+			}
+		}
+	}
 }
 
 
