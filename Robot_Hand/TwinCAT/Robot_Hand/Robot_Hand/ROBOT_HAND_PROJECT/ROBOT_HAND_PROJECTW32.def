@@ -1,0 +1,10 @@
+; ROBOT_HAND_PROJECTW32.def : Declares the module parameters.
+
+LIBRARY      "ROBOT_HAND_PROJECTW32.DLL"
+
+EXPORTS
+	DllCanUnloadNow      PRIVATE
+	DllGetClassObject    PRIVATE
+	DllRegisterServer    PRIVATE
+	DllUnregisterServer	 PRIVATE
+	DllGetTcCtrl		 PRIVATE
