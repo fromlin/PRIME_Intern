@@ -1,0 +1,138 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(402,5): warning MSB8038: 스펙터 완화가 사용하도록 설정되어 있지만 스펙터 완화된 라이브러리를 찾을 수 없습니다. Visual Studio 워크로드에 스펙터 완화된 라이브러리가 포함되어 있는지 확인하세요. 자세한 내용은 https://aka.ms/Ofhn4c를 참조하세요.
+  denso_control.cpp
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(47): error C3646: 'makeString': 알 수 없는 재정의 지정자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(47): error C2059: 구문 오류: '('
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(47): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): error C2061: 구문 오류: 식별자 'string'
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(71): error C3646: 'command': 알 수 없는 재정의 지정자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(71): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(6): error C3861: 'bCap_Open_Client': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(10): error C3861: 'bCap_ServiceStart': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(18): error C3861: 'bCap_ControllerConnect': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(19): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(20): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(34): error C3861: 'bCap_ControllerGetRobot': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(35): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(36): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(52): error C3861: 'bCap_RobotExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(70): error C3861: 'bCap_RobotExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(87): error C3861: 'bCap_RobotExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(95): error C3861: 'bCap_RobotRelease': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(98): error C3861: 'bCap_ControllerDisconnect': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(101): error C3861: 'bCap_ServiceStop': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(104): error C3861: 'bCap_Close_Client': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(112): error C3861: 'bCap_Open_Client': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(116): error C3861: 'bCap_ServiceStart': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(124): error C3861: 'bCap_ControllerConnect': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(125): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(126): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(140): error C3861: 'bCap_ControllerGetRobot': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(141): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(142): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(158): error C3861: 'bCap_RobotExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(176): error C3861: 'bCap_RobotExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(200): error C3861: 'bCap_RobotExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(212): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(213): error C3861: 'bCap_RobotExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(222): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(222): error C3861: 'makeString': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(223): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(223): error C2512: 'ATL::CA2WEX<128>': 사용할 수 있는 적절한 기본 생성자가 없습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(223): note: 소스 형식을 가져올 수 있는 생성자가 없거나 생성자 오버로드 확인이 모호합니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(225): error C3861: 'bCap_RobotMove': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(227): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(227): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(240): error C3861: 'bCap_RobotExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(255): error C3861: 'bCap_RobotExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(265): error C3861: 'bCap_ControllerExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(277): error C3861: 'bCap_RobotExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(285): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(292): error C3861: 'bCap_RobotExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(300): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(317): error C2065: 'cin': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(324): error C3861: 'bCap_RobotExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(337): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(337): error C2065: 'cin': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(341): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(341): error C3861: 'makeString': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(342): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(342): error C2512: 'ATL::CA2WEX<128>': 사용할 수 있는 적절한 기본 생성자가 없습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(342): note: 소스 형식을 가져올 수 있는 생성자가 없거나 생성자 오버로드 확인이 모호합니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(344): error C3861: 'bCap_RobotMove': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(346): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(346): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(364): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(364): error C3861: 'makeString': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(365): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(365): error C2512: 'ATL::CA2WEX<128>': 사용할 수 있는 적절한 기본 생성자가 없습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(365): note: 소스 형식을 가져올 수 있는 생성자가 없거나 생성자 오버로드 확인이 모호합니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(367): error C3861: 'bCap_RobotMove': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(369): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(369): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(378): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(378): error C2065: 'cin': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(382): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(382): error C3861: 'makeString': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(383): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(383): error C2512: 'ATL::CA2WEX<128>': 사용할 수 있는 적절한 기본 생성자가 없습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(383): note: 소스 형식을 가져올 수 있는 생성자가 없거나 생성자 오버로드 확인이 모호합니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(385): error C3861: 'bCap_RobotMove': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(397): error C3861: 'bCap_RobotExecute': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(405): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(409): error C2065: 'cout': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(409): error C2065: 'cin': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(410): error C2065: 'cout': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(410): error C2065: 'cin': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(414): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(414): error C3861: 'makeString': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(415): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(415): error C2512: 'ATL::CA2WEX<128>': 사용할 수 있는 적절한 기본 생성자가 없습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(415): note: 소스 형식을 가져올 수 있는 생성자가 없거나 생성자 오버로드 확인이 모호합니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(417): error C3861: 'bCap_RobotMove': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(429): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(429): error C3861: 'makeString': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(430): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(430): error C2512: 'ATL::CA2WEX<128>': 사용할 수 있는 적절한 기본 생성자가 없습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(430): note: 소스 형식을 가져올 수 있는 생성자가 없거나 생성자 오버로드 확인이 모호합니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(432): error C3861: 'bCap_RobotMove': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(434): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(434): error C2660: 'denso_control::print': 함수는 2개의 매개 변수를 사용하지 않습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): note: 'denso_control::print' 선언을 참조하십시오.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(449): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(449): error C3861: 'makeString': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(450): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(450): error C2512: 'ATL::CA2WEX<128>': 사용할 수 있는 적절한 기본 생성자가 없습니다.
+  c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(450): note: 소스 형식을 가져올 수 있는 생성자가 없거나 생성자 오버로드 확인이 모호합니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(451): error C3861: 'bCap_RobotRotate': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(468): error C2065: 'cout': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(468): error C2065: 'cin': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(472): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(472): error C3861: 'makeString': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(473): error C2065: 'command': 선언되지 않은 식별자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(473): error C3861: 'makeString': 식별자를 찾을 수 없습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.cpp(473): fatal error C1003: 오류 수가 100개를 초과했습니다. 컴파일을 중지합니다.
+  main.cpp
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(47): error C3646: 'makeString': 알 수 없는 재정의 지정자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(47): error C2059: 구문 오류: '('
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(47): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(48): error C2061: 구문 오류: 식별자 'string'
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(71): error C3646: 'command': 알 수 없는 재정의 지정자입니다.
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(71): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+  코드를 생성하고 있습니다...

@@ -1,0 +1,17 @@
+﻿  denso_control.cpp
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(12): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
+  main.cpp
+c:\users\prime_ody\desktop\lin\denso_test\denso_test\denso_control.h(12): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
+denso_control.obj : error LNK2001: bCap_ControllerExecute 외부 기호를 확인할 수 없습니다.
+denso_control.obj : error LNK2001: bCap_ServiceStop 외부 기호를 확인할 수 없습니다.
+denso_control.obj : error LNK2001: bCap_RobotRelease 외부 기호를 확인할 수 없습니다.
+denso_control.obj : error LNK2001: bCap_Open_Client 외부 기호를 확인할 수 없습니다.
+denso_control.obj : error LNK2001: bCap_ControllerDisconnect 외부 기호를 확인할 수 없습니다.
+denso_control.obj : error LNK2001: bCap_Close_Client 외부 기호를 확인할 수 없습니다.
+denso_control.obj : error LNK2001: bCap_RobotRotate 외부 기호를 확인할 수 없습니다.
+denso_control.obj : error LNK2001: bCap_ControllerGetRobot 외부 기호를 확인할 수 없습니다.
+denso_control.obj : error LNK2001: bCap_ControllerConnect 외부 기호를 확인할 수 없습니다.
+denso_control.obj : error LNK2001: bCap_ServiceStart 외부 기호를 확인할 수 없습니다.
+denso_control.obj : error LNK2001: bCap_RobotExecute 외부 기호를 확인할 수 없습니다.
+denso_control.obj : error LNK2001: bCap_RobotMove 외부 기호를 확인할 수 없습니다.
+C:\Users\PRIME_ody\Desktop\Lin\denso_test\x64\Release\denso_test.exe : fatal error LNK1120: 12개의 확인할 수 없는 외부 참조입니다.
